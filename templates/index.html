@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kurzy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+<body>
+	<section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">
+                    Kurzy
+                </h1>
+            </div>
+        </div>
+    </section>
+<br><br><br> 
+<div class="columns">
+  <div class="column has-text-centered">
+    Aktuální kurz 1 EUR:
+    <br>
+    <div>
+    <a class="button is-medium">
+    {{ czk_rate3 }} Kč
+    </a>
+    <br>
+    <a class="button is-medium">
+        {{ gbp_rate3 }} £
+    </a>
+    <br>
+    <a class="button is-medium">
+        {{ usd_rate3 }} $
+    </a>
+    <br>
+    </div>
+    
+    
+  </div>
+  <div class="column">
+    <div class="field has-addons has-addons-centered">
+      <p class="control">
+        <span class="select">
+          <select>
+            <option>$</option>
+            <option>£</option>
+            <option>€</option>
+            <option>Kč</option>
+          </select>
+        </span>
+      </p>
+      <p class="control">
+        <input class="input" type="text" placeholder="Množství">
+      </p>
+      <p class="control">
+        <a class="button is-primary">
+          Přepočítat
+        </a>
+      </p>
+    </div>
+    <div>
+        <textarea class="textarea" placeholder="Výsledek"></textarea>
+    </div>
+  </div>
+  <div class="column">
+    <div class="field has-addons has-addons-centered">
+      <p class="control">
+        <span class="select">
+          <select>
+            <option>$</option>
+            <option>£</option>
+            <option>€</option>
+            <option>Kč</option>
+          </select>
+        </span>
+      </p>
+      <p class="control">
+        <input class="input" type="text" placeholder="Množství">
+      </p>
+      <p class="control">
+        <a class="button is-primary">
+          Přepočítat
+        </a>
+      </p>
+    </div>
+    <div>
+        <textarea class="textarea" placeholder="Výsledek"></textarea>
+    </div>
+  </div>
+  <div class="column has-text-centered">
+    Aktuální kurz 1 CZK:
+    <br>
+    <a class="button is-medium ">
+        {{ czk_eur4 }} €
+    </a>
+    <br>
+    <a class="button is-medium">
+        {{ czk_gbp4 }} £
+    </a>
+    <br>
+    <a class="button is-medium">
+        {{ czk_usd4 }} $
+    </a>
+    <br>
+  </div>
+
+</div>
+<div>
+    {{ result }}
+</div>
+
+
+
+            
+   <br><br><br>    
+    <div class="block">
+        <div class="columns">
+            
+            <div class="column is=6">
+                {% for currency in currency_data %}
+                <div class="box">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-50x50">
+                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <span class="title">{{ currency.currency }}</span>
+                                    <br>
+                                    <span class="subtitle">{{ currency.rate }}° C</span>                                   
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
