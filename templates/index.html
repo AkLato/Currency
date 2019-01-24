@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<section class="hero is-primary">
+	<section class="hero is-primary is-bold">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title has-text-centered">
@@ -57,19 +57,7 @@
       <p class="control">
         <input class="input" type="text" placeholder="Množství">
       </p>
-      <p class="control">
-        <a class="button is-primary">
-          Přepočítat
-        </a>
-      </p>
-    </div>
-    <div>
-        <textarea class="textarea" placeholder="Výsledek"></textarea>
-    </div>
-  </div>
-  <div class="column">
-    <div class="field has-addons has-addons-centered">
-      <p class="control">
+        <p class="control">
         <span class="select">
           <select>
             <option>$</option>
@@ -80,9 +68,6 @@
         </span>
       </p>
       <p class="control">
-        <input class="input" type="text" placeholder="Množství">
-      </p>
-      <p class="control">
         <a class="button is-primary">
           Přepočítat
         </a>
@@ -92,28 +77,25 @@
         <textarea class="textarea" placeholder="Výsledek"></textarea>
     </div>
   </div>
+  
   <div class="column has-text-centered">
-    Aktuální kurz 1 CZK:
+    Aktuální kurz 1 BTC:
     <br>
     <a class="button is-medium ">
-        {{ czk_eur4 }} €
+        {{ czk_btc2 }} Kč
     </a>
     <br>
     <a class="button is-medium">
-        {{ czk_gbp4 }} £
+        {{ eur_btc2 }} €
     </a>
     <br>
     <a class="button is-medium">
-        {{ czk_usd4 }} $
+        {{ usd_btc2 }} $
     </a>
     <br>
   </div>
 
 </div>
-<div>
-    {{ result }}
-</div>
-
 
 
             
@@ -145,6 +127,8 @@
             </div>
         </div>
     </div>
-    
+  <footer class="footer">
+        <a class="button is-medium level-item is-primary is-bold" href="https://www.aklato.eu/">Zpět</a>
+    </footer>  
 </body>
 </html>

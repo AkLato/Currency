@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
-	url = "http://data.fixer.io/api/latest?access_key=2923f7f32c2cefb141884314c1c32aff&symbols=USD,GBP,EUR,CZK"
+	url = "http://data.fixer.io/api/latest?access_key=2923f7f32c2cefb141884314c1c32aff&symbols=USD,GBP,EUR,CZK,BTC"
 
 	response = requests.get(url)
 	data = response.text
@@ -18,6 +18,7 @@ def index():
 	usd_rate = parsed["rates"]["USD"]
 	eur_rate = parsed["rates"]["EUR"]
 	czk_rate = parsed["rates"]["CZK"]
+	btc_rate = parsed["rates"]["BTC"]
 
 	gbp_rate3 = round(gbp_rate, 3)
 	usd_rate3 = round(usd_rate, 3)
@@ -32,7 +33,14 @@ def index():
 	czk_gbp4 = round(czk_gbp, 4)
 	czk_usd4 = round(czk_usd, 4)
 
-	result = czk_rate * 39
+	czk_btc = czk_rate / btc_rate
+	eur_btc = eur_rate / btc_rate
+	usd_btc = usd_rate / btc_rate
+
+	czk_btc2 = round(czk_btc, 2)
+	eur_btc2 = round(eur_btc, 2)
+	usd_btc2 = round(usd_btc, 2)
+	
 
 	return render_template('index.html', gbp_rate=gbp_rate, 
 										usd_rate=usd_rate, 
@@ -45,8 +53,12 @@ def index():
 										czk_eur4=czk_eur4,
 										czk_gbp4=czk_gbp4,
 										czk_usd4=czk_usd4,
-										result=result
-
+										czk_btc=czk_btc,
+										eur_btc=eur_btc,
+										usd_btc=usd_btc,
+										czk_btc2=czk_btc2,
+										eur_btc2=eur_btc2,
+										usd_btc2=usd_btc2
 										)
 
 '''
