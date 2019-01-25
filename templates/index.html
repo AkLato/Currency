@@ -43,41 +43,45 @@
     
   </div>
   <div class="column">
+    <form id="form1" action="/convert" method="POST" enctype="multipart/form-data">
     <div class="field has-addons has-addons-centered">
       <p class="control">
         <span class="select">
-          <select>
-            <option>$</option>
-            <option>£</option>
-            <option>€</option>
-            <option>Kč</option>
+          <select name='currencies'>
+            <option value='USD'>USD</option>
+            <option value='GBP'>GBP</option>
+            <option value='EUR'>EUR</option>
+            <option value='Kč'>Kč</option>
           </select>
         </span>
       </p>
       <p class="control">
-        <input class="input" type="text" placeholder="Množství">
-      </p>
+            <input action="convert" method="POST" class="input" type="text" placeholder="Množství" name="amount">
+          </p>
         <p class="control">
         <span class="select">
-          <select>
-            <option>$</option>
-            <option>£</option>
-            <option>€</option>
-            <option>Kč</option>
+          <select name='end_currencies'>
+            <option value='USD'>USD</option>
+            <option value='GBP'>GBP</option>
+            <option value='EUR'>EUR</option>
+            <option value='Kč'>Kč</option>
           </select>
         </span>
-      </p>
-      <p class="control">
-        <a class="button is-primary">
-          Přepočítat
-        </a>
-      </p>
+        <div class="control">
+        <button class="button is-bold is-primary">Přepočítat</button>
+         </div>
+        </p>
     </div>
+  </form>
     <div>
-        <textarea class="textarea" placeholder="Výsledek"></textarea>
+        <textarea class="textarea" placeholder="Výsledek">
+          {% if currency and amount  and end_currency is defined %}
+          input: {{ currency }}, {{ amount }}, {{end_currency }} = {{ result}}
+          {% endif %}
+        </textarea>
     </div>
   </div>
-  
+
   <div class="column has-text-centered">
     Aktuální kurz 1 BTC:
     <br>
@@ -99,34 +103,11 @@
 
 
             
-   <br><br><br>    
-    <div class="block">
-        <div class="columns">
-            
-            <div class="column is=6">
-                {% for currency in currency_data %}
-                <div class="box">
-                    <article class="media">
-                        <div class="media-left">
-                            <figure class="image is-50x50">
-                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <span class="title">{{ currency.currency }}</span>
-                                    <br>
-                                    <span class="subtitle">{{ currency.rate }}° C</span>                                   
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+   <br><br><br>
+
+   
+
+    
   <footer class="footer">
         <a class="button is-medium level-item is-primary is-bold" href="https://www.aklato.eu/">Zpět</a>
     </footer>  
