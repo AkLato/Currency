@@ -115,7 +115,7 @@ def convert():
 
 		if currency and amount and end_currency!=None:
 			
-			
+			result = amount * currency
 			return render_template('index.html', currency=currency,
 												 amount=amount,
 												 end_currency=end_currency,
