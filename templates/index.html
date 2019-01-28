@@ -48,22 +48,22 @@
       <p class="control">
         <span class="select">
           <select name='currencies'>
+            <option value='EUR'>EUR</option>
             <option value='USD'>USD</option>
             <option value='GBP'>GBP</option>
-            <option value='EUR'>EUR</option>
             <option value='Kč'>Kč</option>
           </select>
         </span>
       </p>
       <p class="control">
-            <input action="convert" method="POST" class="input" type="text" placeholder="Množství" name="amount">
+            <input action="convert" method="POST" class="input" type="text" placeholder="Množství                       >" name="amount">
           </p>
         <p class="control">
         <span class="select">
           <select name='end_currencies'>
+            <option value='EUR'>EUR</option>
             <option value='USD'>USD</option>
             <option value='GBP'>GBP</option>
-            <option value='EUR'>EUR</option>
             <option value='Kč'>Kč</option>
           </select>
         </span>
@@ -73,13 +73,10 @@
         </p>
     </div>
   </form>
-    <div>
-        <textarea class="textarea" placeholder="Výsledek">
-          {% if currency and amount  and end_currency is defined %}
-          input: {{ currency }}, {{ amount }}, {{end_currency }} = {{ result}}
-          {% endif %}
-        </textarea>
-    </div>
+      <textarea class="textarea" rows="3" placeholder="Výsledek" style="font-size: 1.5em">{% if currency and amount and end_currency is defined %}
+        {{ result }} {{ end_currency}}
+        {% endif %}
+      </textarea>
   </div>
 
   <div class="column has-text-centered">
@@ -100,16 +97,9 @@
   </div>
 
 </div>
-
-
-            
-   <br><br><br>
-
-   
-
-    
+<br><br><br>
   <footer class="footer">
-        <a class="button is-medium level-item is-primary is-bold" href="https://www.aklato.eu/">Zpět</a>
+        <a class="button is-medium level-item is-primary is-bold" href="https://www.aklato.eu/">Zpět na portfolio</a>
     </footer>  
 </body>
 </html>

@@ -105,22 +105,68 @@ def convert():
 
 	if request.method == "POST":
 		currency = request.form.get('currencies', None)
-		
-
 		amount = request.form.get('amount', None, type=int)
-		 
-
 		end_currency = request.form.get('end_currencies', None)
-		
 
 		if currency and amount and end_currency!=None:
+
+			if currency == 'EUR' and end_currency == 'EUR':
+				result = amount 
+
+			if currency == 'EUR' and end_currency == 'GBP':
+				result = eur_rate * amount * gbp_rate
+
+			if currency == 'EUR' and end_currency == 'Kč':
+				result = eur_rate * amount * czk_rate
+
+			if currency == 'EUR' and end_currency == 'USD':
+				result = eur_rate * amount * usd_rate
+
 			
-			result = amount * currency
+			if currency == 'Kč' and end_currency == 'EUR':
+				result = eur_rate/czk_rate * amount 
+
+			if currency == 'Kč' and end_currency == 'GBP':
+				result = gbp_rate/czk_rate * amount 
+
+			if currency == 'Kč' and end_currency == 'Kč':
+				result = amount 
+
+			if currency == 'Kč' and end_currency == 'USD':
+				result = usd_rate/czk_rate * amount 
+
+
+			if currency == 'USD' and end_currency == 'EUR':
+				result = amount / usd_rate  
+
+			if currency == 'USD' and end_currency == 'GBP':
+				result = amount * gbp_rate
+
+			if currency == 'USD' and end_currency == 'Kč':
+				result =  amount/usd_rate * czk_rate
+
+			if currency == 'USD' and end_currency == 'USD':
+				result = amount 
+
+
+			if currency == 'GBP' and end_currency == 'EUR':
+				result = amount / gbp_rate  
+
+			if currency == 'GBP' and end_currency == 'GBP':
+				result = amount 
+
+			if currency == 'GBP' and end_currency == 'Kč':
+				result =  amount/gbp_rate * czk_rate
+
+			if currency == 'GBP' and end_currency == 'USD':
+				result = amount/gbp_rate * usd_rate
+			
+			
+			
 			return render_template('index.html', currency=currency,
 												 amount=amount,
 												 end_currency=end_currency,
 												 result= result,
-
 												gbp_rate=gbp_rate, 
 												usd_rate=usd_rate, 
 												eur_rate=eur_rate, 
