@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)
 
@@ -108,6 +108,9 @@ def convert():
 		amount = request.form.get('amount', None, type=int)
 		end_currency = request.form.get('end_currencies', None)
 
+		if amount == None:
+			return ('', 204)
+
 		if currency and amount and end_currency!=None:
 
 			if currency == 'EUR' and end_currency == 'EUR':
@@ -161,8 +164,6 @@ def convert():
 			if currency == 'GBP' and end_currency == 'USD':
 				result = amount/gbp_rate * usd_rate
 			
-			
-			
 			return render_template('index.html', currency=currency,
 												 amount=amount,
 												 end_currency=end_currency,
@@ -185,7 +186,6 @@ def convert():
 												eur_btc2=eur_btc2,
 												usd_btc2=usd_btc2
 												)
-
 	return render_template('index.html' )
 
 if __name__ == '__main__':
