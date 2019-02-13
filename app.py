@@ -163,6 +163,8 @@ def convert():
 
 			if currency == 'GBP' and end_currency == 'USD':
 				result = amount/gbp_rate * usd_rate
+
+			result = round(result, 2)
 			
 			return render_template('index.html', currency=currency,
 												 amount=amount,
