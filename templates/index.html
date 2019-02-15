@@ -1,105 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kurzy</title>
+    <title>Curzor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-	<section class="hero is-primary is-bold">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title has-text-centered">
-                    Kurzy
-                </h1>
-            </div>
+	<h1 class='is-size-2 has-text-dark has-text-centered'>Kurzy</h1>
+
+    <div class="columns" id='columns'>
+        <div class="column is-3 has-text-centered" id="EUR">
+            Aktuální kurz 1 EUR:
+            <br>
+            <a class="button is-medium">{{ czk_rate }} Kč</a>
+            <br>
+            <a class="button is-medium">{{ gbp_rate }} £</a>
+            <br>
+            <a class="button is-medium">{{ usd_rate }} $</a>
+            <br>
         </div>
-    </section>
-<br><br><br> 
-<div class="columns">
-  <div class="column has-text-centered">
-    Aktuální kurz 1 EUR:
-    <br>
-    <div>
-    <a class="button is-medium">
-    {{ czk_rate3 }} Kč
-    </a>
-    <br>
-    <a class="button is-medium">
-        {{ gbp_rate3 }} £
-    </a>
-    <br>
-    <a class="button is-medium">
-        {{ usd_rate3 }} $
-    </a>
-    <br>
+        <div class="column">
+            <form id="form1" action="convert" method="POST" enctype="multipart/form-data">
+                <div class="field has-addons has-addons-centered">
+                    <span class="select">
+                        <select name='currencies'>
+                            <option value='EUR'>EUR</option>
+                            <option value='USD'>USD</option>
+                            <option value='GBP'>GBP</option>
+                            <option value='Kč'>Kč</option>
+                        </select>
+                    </span>
+                    <input method="POST" class="input" type="text" placeholder="Množství" name="amount" required>
+                    <span class="select">
+                        <select name='end_currencies'>
+                            <option value='EUR'>EUR</option>
+                            <option value='USD'>USD</option>
+                            <option value='GBP'>GBP</option>
+                            <option value='Kč'>Kč</option>
+                        </select>
+                    </span>
+                    <button class="button is-bold is-link">Přepočítat</button>
+                </div>
+            </form>
+            <textarea class="textarea" rows="3" placeholder="Výsledek" style="font-size: 1.5em">
+                {% if currency and amount and end_currency is defined %}
+                {{ result }} {{ end_currency}}
+                {% endif %}
+            </textarea>
+        </div>
+        <div class="column is-3 has-text-centered" id='BTC'>
+            Aktuální kurz 1 BTC:
+            <br>
+            <a class="button is-medium ">{{ czk_btc }} Kč</a>
+            <br>
+            <a class="button is-medium">{{ eur_btc }} €</a>
+            <br>
+            <a class="button is-medium">{{ usd_btc }} $</a>
+            <br>
+        </div>
     </div>
-    
-    
-  </div>
-  <div class="column">
-    <form id="form1" action="/convert" method="POST" enctype="multipart/form-data">
-    <div class="field has-addons has-addons-centered">
-      <p class="control">
-        <span class="select">
-          <select name='currencies'>
-            <option value='EUR'>EUR</option>
-            <option value='USD'>USD</option>
-            <option value='GBP'>GBP</option>
-            <option value='Kč'>Kč</option>
-          </select>
-        </span>
-      </p>
-      <p class="control">
-            <input action="convert" method="POST" class="input" type="text" placeholder="Množství                       >" name="amount">
-          </p>
-        <p class="control">
-        <span class="select">
-          <select name='end_currencies'>
-            <option value='EUR'>EUR</option>
-            <option value='USD'>USD</option>
-            <option value='GBP'>GBP</option>
-            <option value='Kč'>Kč</option>
-          </select>
-        </span>
-        <div class="control">
-        <button class="button is-bold is-primary">Přepočítat</button>
-         </div>
-        </p>
+
+
+  <section id='graph_area'>
+    <div id='graph1'>
+      <div class='title has-text-centered'>
+        ETH/USD
+      </div>
+      <div id='graph'>
+          <img src="{{ url_for('fig') }}" alt="Image Placeholder" id='ethusd'>
+      </div>
     </div>
-  </form>
-      <textarea class="textarea" rows="3" placeholder="Výsledek" style="font-size: 1.5em">{% if currency and amount and end_currency is defined %}
-        {{ result }} {{ end_currency}}
-        {% endif %}
-      </textarea>
-  </div>
+    <div id='graph2'>
+      <div class='title has-text-centered'>
+        BTC/USD
+      </div>
+      <div id='graph'>
+          
+      </div>
+    </div>
+    <div id='graph3'>
+      <div class='title has-text-centered'>
+        MKR/USD
+      </div>
+      <div id='graph'>
+          
+      </div>
+    </div>
+  </section>
 
-  <div class="column has-text-centered">
-    Aktuální kurz 1 BTC:
-    <br>
-    <a class="button is-medium ">
-        {{ czk_btc2 }} Kč
-    </a>
-    <br>
-    <a class="button is-medium">
-        {{ eur_btc2 }} €
-    </a>
-    <br>
-    <a class="button is-medium">
-        {{ usd_btc2 }} $
-    </a>
-    <br>
-  </div>
-
-</div>
-<br><br><br>
   <footer class="footer">
-        <a class="button is-medium level-item is-primary is-bold" href="https://www.aklato.eu/">Zpět na portfolio</a>
-    </footer>  
+      <a class="button is-medium level-item is-link is-bold" href="https://www.aklato.eu/">Zpět na portfolio</a>
+  </footer> 
+
+
 </body>
 </html>
