@@ -167,5 +167,82 @@ def fig():
 	img.seek(0)
 	return send_file(img, mimetype='image/png')
 
+
+@app.route('/figb/')
+def figb():
+	from cryptocompy import coin, price
+
+	fig = plt.figure(figsize=(15, 7.5))
+	
+	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=90)
+
+	axis = fig.add_subplot(1, 1, 1)
+	prices = []
+	for value in r:
+		price = value['close']
+		price = int(price)
+		prices.append(price)
+	
+	dates = []
+	for value in r:
+		date = value['time']
+		date = date[5:]
+		date = date[:5]
+		date = date[:2] + date[2:]
+		dates.append(date)
+
+	axis.plot(dates, prices)
+	xticks = axis.get_xticks()
+	axis.set_xticks(xticks[::9])
+	axis.tick_params(labelsize=16)
+	canvas = FigureCanvas(fig)
+	output = io.BytesIO()
+	canvas.print_png(output)
+	response = make_response(output.getvalue())
+	response.mimetype = 'imageb/png'
+	img = io.BytesIO()
+	fig.savefig(img)
+	img.seek(0)
+	return send_file(img, mimetype='imageb/png')
+
+
+@app.route('/figc/')
+def figc():
+	from cryptocompy import coin, price
+
+	fig = plt.figure(figsize=(15, 7.5))
+	
+	r = price.get_historical_data('MKR', 'USD', 'day', info='close', aggregate=1, limit=90)
+
+	axis = fig.add_subplot(1, 1, 1)
+	prices = []
+	for value in r:
+		price = value['close']
+		price = int(price)
+		prices.append(price)
+	
+	dates = []
+	for value in r:
+		date = value['time']
+		date = date[5:]
+		date = date[:5]
+		date = date[:2] + date[2:]
+		dates.append(date)
+
+	axis.plot(dates, prices)
+	xticks = axis.get_xticks()
+	axis.set_xticks(xticks[::9])
+	axis.tick_params(labelsize=16)
+	canvas = FigureCanvas(fig)
+	output = io.BytesIO()
+	canvas.print_png(output)
+	response = make_response(output.getvalue())
+	response.mimetype = 'imagec/png'
+	img = io.BytesIO()
+	fig.savefig(img)
+	img.seek(0)
+	return send_file(img, mimetype='imagec/png')
+
+	
 if __name__ == '__main__':
 	app.run(debug=True)
