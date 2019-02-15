@@ -68,7 +68,7 @@ scipy==1.2.1
 seaborn==0.9.0
 six==1.11.0
 SQLAlchemy==1.2.12
-tablib==0.11.4
+tablib==0.11.5
 tinydb==3.12.2
 traitlets==4.3.2
 tzlocal==1.5.1
