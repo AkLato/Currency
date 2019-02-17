@@ -14,7 +14,7 @@
 	<h1 class='is-size-2 has-text-dark has-text-centered'>Kurzy</h1>
 
     <div class="columns" id='columns'>
-        <div class="column is-3 has-text-centered" id="EUR">
+        <div class="column is-4 has-text-centered" id="EUR">
             Aktuální kurz 1 EUR:
             <br>
             <a class="button is-medium">{{ czk_rate }} Kč</a>
@@ -24,7 +24,7 @@
             <a class="button is-medium">{{ usd_rate }} $</a>
             <br>
         </div>
-        <div class="column">
+        <div class="column" >
             <form id="form1" action="convert" method="POST" enctype="multipart/form-data">
                 <div class="field has-addons has-addons-centered">
                     <span class="select">
@@ -38,10 +38,10 @@
                     <input method="POST" class="input" type="text" placeholder="Množství" name="amount" required>
                     <span class="select">
                         <select name='end_currencies'>
+                            <option value='Kč'>Kč</option>
                             <option value='EUR'>EUR</option>
                             <option value='USD'>USD</option>
                             <option value='GBP'>GBP</option>
-                            <option value='Kč'>Kč</option>
                         </select>
                     </span>
                     <button class="button is-bold is-link">Přepočítat</button>
@@ -53,7 +53,7 @@
                 {% endif %}
             </textarea>
         </div>
-        <div class="column is-3 has-text-centered" id='BTC'>
+        <div class="column is-4 has-text-centered" id='BTC'>
             Aktuální kurz 1 BTC:
             <br>
             <a class="button is-medium ">{{ czk_btc }} Kč</a>
@@ -80,7 +80,7 @@
         BTC/USD
       </div>
       <div id='graph'>
-          
+          <img src="{{ url_for('figb') }}" alt="Image Placeholder" id='ethusd'>
       </div>
     </div>
     <div id='graph3'>
@@ -88,7 +88,7 @@
         MKR/USD
       </div>
       <div id='graph'>
-          
+          <img src="{{ url_for('figc') }}" alt="Image Placeholder" id='ethusd'>
       </div>
     </div>
   </section>
