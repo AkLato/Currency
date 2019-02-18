@@ -273,7 +273,7 @@ def fig14eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::9])
+	axis.set_xticks(xticks[::2], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -310,7 +310,7 @@ def fig30eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.xticks(xticks[::9])
+	axis.set_xticks(xticks[::3], rotation=45)
 	axis.tick_params(labelsize=44)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -347,7 +347,7 @@ def fig90eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::9])
+	axis.set_xticks(xticks[::10], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -460,8 +460,7 @@ def fig14btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::7])
-	axis.set_xticklabels('')
+	axis.set_xticks(xticks[::2], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -498,7 +497,7 @@ def fig30btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::9])
+	axis.set_xticks(xticks[::3], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -536,7 +535,7 @@ def fig90btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::9])
+	axis.set_xticks(xticks[::10], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -573,7 +572,7 @@ def fig300btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::30])
+	axis.set_xticks(xticks[::30], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -610,7 +609,7 @@ def fig900btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::100])
+	axis.set_xticks(xticks[::100], rotation=45)
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
