@@ -11,18 +11,23 @@
 </head>
 
 <body>
-	<h1 class='is-size-2 has-text-dark has-text-centered'>Kurzy</h1>
+    <div id="top">
+	<h1 class='is-size-3 has-text-dark has-text-centered'>C/G/R</h1>
+    <h6 class='is-size-6 has-text-centered'>Crypto · Graphs · Rates</h6>
+    </div>
 
     <div class="columns" id='columns'>
         <div class="column is-4 has-text-centered" id="EUR">
             Aktuální kurz 1 EUR:
             <br>
             <a class="button is-medium">{{ czk_rate }} Kč</a>
-            <br>
             <a class="button is-medium">{{ gbp_rate }} £</a>
             <br>
             <a class="button is-medium">{{ usd_rate }} $</a>
+            <a class="button is-medium">{{ rub_rate }} ₽</a>
             <br>
+            <a class="button is-medium">{{ cny_rate }} ¥</a>
+            <a class="button is-medium">{{ pln_rate }} zł </a>
         </div>
         <div class="column" >
             <form id="form1" action="convert" method="POST" enctype="multipart/form-data">
@@ -33,6 +38,9 @@
                             <option value='USD'>USD</option>
                             <option value='GBP'>GBP</option>
                             <option value='Kč'>Kč</option>
+                            <option value='RUB'>RUB</option>
+                            <option value='CNY'>CNY</option>
+                            <option value='PLN'>PLN</option>
                         </select>
                     </span>
                     <input method="POST" class="input" type="text" placeholder="Množství" name="amount" required>
@@ -42,9 +50,12 @@
                             <option value='EUR'>EUR</option>
                             <option value='USD'>USD</option>
                             <option value='GBP'>GBP</option>
+                            <option value='RUB'>RUB</option>
+                            <option value='CNY'>CNY</option>
+                            <option value='PLN'>PLN</option>
                         </select>
                     </span>
-                    <button class="button is-bold is-link">Přepočítat</button>
+                    <button class="button is-bold is-link" style="background-color: #24478f">Přepočítat</button>
                 </div>
             </form>
             <textarea class="textarea" rows="3" placeholder="Výsledek" style="font-size: 1.5em">
@@ -56,45 +67,50 @@
         <div class="column is-4 has-text-centered" id='BTC'>
             Aktuální kurz 1 BTC:
             <br>
-            <a class="button is-medium ">{{ czk_btc }} Kč</a>
-            <br>
+            <a class="button is-medium">{{ czk_btc }} Kč</a>
             <a class="button is-medium">{{ eur_btc }} €</a>
             <br>
             <a class="button is-medium">{{ usd_btc }} $</a>
+            <a class="button is-medium">{{ rub_btc }} ₽</a>
             <br>
+            <a class="button is-medium">{{ cny_btc }} ¥</a>
+            <a class="button is-medium">{{ pln_btc }} zł</a>
         </div>
     </div>
+   
 
 
-  <section id='graph_area'>
-    <div id='graph1'>
-      <div class='title has-text-centered'>
-        ETH/USD
-      </div>
-      <div id='graph'>
-          <img src="{{ url_for('fig') }}" alt="Image Placeholder" id='ethusd'>
-      </div>
-    </div>
-    <div id='graph2'>
-      <div class='title has-text-centered'>
-        BTC/USD
-      </div>
-      <div id='graph'>
-          <img src="{{ url_for('figb') }}" alt="Image Placeholder" id='ethusd'>
-      </div>
-    </div>
-    <div id='graph3'>
-      <div class='title has-text-centered'>
-        MKR/USD
-      </div>
-      <div id='graph'>
-          <img src="{{ url_for('figc') }}" alt="Image Placeholder" id='ethusd'>
-      </div>
-    </div>
-  </section>
+    <section id='graph_area'>
+        <div id='graph1'>
+            <div class='title has-text-centered'>
+            ETH/USD
+            </div>
+            <div id='graph' class="has-text-centered">
+                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig14eth') }}'">14</button>
+                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig30eth') }}'">30</button>
+                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig90eth') }}'">90</button>
+                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig300eth') }}'">300</button>
+                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig900eth') }}'">900</button>
+                <img id="ethusd" src="{{ url_for('fig90eth') }}">
+            </div>
+        </div>
+        <div id='graph2'>
+            <div class='title has-text-centered'>
+            BTC/USD
+            </div>
+            <div id='graph' class="has-text-centered">
+              <button onclick="document.getElementById('btcusd').src='{{ url_for('fig14btc') }}'">14</button>
+                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig30btc') }}'">30</button>
+                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig90btc') }}'">90</button>
+                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig300btc') }}'">300</button>
+                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig900btc') }}'">900</button>
+                <img id="btcusd" src="{{ url_for('fig90btc') }}">
+            </div>
+        </div>
+    </section>
 
   <footer class="footer">
-      <a class="button is-medium level-item is-link is-bold" href="https://www.aklato.eu/">Zpět na portfolio</a>
+      <a class="button is-medium level-item is-bold" style="; background-color:#fff" href="https://www.aklato.eu/"> < Portfolio</a>
   </footer> 
 
 
