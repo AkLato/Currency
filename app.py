@@ -273,9 +273,9 @@ def fig14eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::2], rotation=45)
+	axis.set_xticks(xticks[::2])
 	axis.tick_params(labelsize=16)
-	canvas = FigureCanvas(fig)
+	canvas = FigureCanvas(fig14eth)
 	output = io.BytesIO()
 	canvas.print_png(output)
 	response = make_response(output.getvalue())
@@ -293,7 +293,7 @@ def fig30eth():
 	
 	r = price.get_historical_data('ETH', 'USD', 'day', info='close', aggregate=1, limit=30)
 
-	axis = fig.add_axes(1, 1, 1)
+	axis = fig.add_subplot(1, 1, 1)
 	prices = []
 	for value in r:
 		price = value['close']
@@ -310,8 +310,8 @@ def fig30eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::3], rotation=45)
-	axis.tick_params(labelsize=44)
+	axis.set_xticks(xticks[::3])
+	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
 	canvas.print_png(output)
@@ -347,7 +347,7 @@ def fig90eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::10], rotation=45)
+	axis.set_xticks(xticks[::10])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -385,7 +385,7 @@ def fig300eth():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::30], rotation=45)
+	axis.set_xticks(xticks[::30])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -415,14 +415,13 @@ def fig900eth():
 	dates = []
 	for value in r:
 		date = value['time']
-		date = date[5:]
-		date = date[:5]
+		date = date[:10]
 		date = date[:2] + date[2:]
 		dates.append(date)
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::100], rotation=45)
+	axis.set_xticks(xticks[::133])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -460,7 +459,7 @@ def fig14btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::2], rotation=45)
+	axis.set_xticks(xticks[::2])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -497,7 +496,7 @@ def fig30btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::3], rotation=45)
+	axis.set_xticks(xticks[::3])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -535,7 +534,7 @@ def fig90btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::10], rotation=45)
+	axis.set_xticks(xticks[::10])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -572,7 +571,7 @@ def fig300btc():
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::30], rotation=45)
+	axis.set_xticks(xticks[::30])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -602,14 +601,13 @@ def fig900btc():
 	dates = []
 	for value in r:
 		date = value['time']
-		date = date[5:]
-		date = date[:5]
+		date = date[:10]
 		date = date[:2] + date[2:]
 		dates.append(date)
 
 	axis.plot(dates, prices)
 	xticks = axis.get_xticks()
-	axis.set_xticks(xticks[::100], rotation=45)
+	axis.set_xticks(xticks[::133])
 	axis.tick_params(labelsize=16)
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
