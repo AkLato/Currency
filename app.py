@@ -250,7 +250,7 @@ def convert():
 def fig14eth():
 	from cryptocompy import coin, price
 
-	fig14eth = plt.figure(figsize=(15, 7.5))
+	fig = plt.figure(figsize=(15, 7.5))
 	r = price.get_historical_data('ETH', 'USD', 'day', info='close', aggregate=1, limit=14)
 	axis = fig14eth.add_subplot(1, 1, 1)
 
@@ -268,11 +268,13 @@ def fig14eth():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 5
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::2])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, 60, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig14eth)
@@ -281,7 +283,7 @@ def fig14eth():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image14eth/png'
 	img = io.BytesIO()
-	fig14eth.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image14eth/png')
 
@@ -308,11 +310,13 @@ def fig30eth():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 5
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::3])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, 60, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -321,7 +325,7 @@ def fig30eth():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image30eth/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image30eth/png')
 
@@ -348,11 +352,13 @@ def fig90eth():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 5
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::10])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, 60, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -361,7 +367,7 @@ def fig90eth():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image90eth/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image90eth/png')
 
@@ -375,6 +381,7 @@ def fig300eth():
 	r = price.get_historical_data('ETH', 'USD', 'day', info='close', aggregate=1, limit=300)
 
 	axis = fig.add_subplot(1, 1, 1)
+
 	prices = []
 	for value in r:
 		price = value['close']
@@ -389,11 +396,13 @@ def fig300eth():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 5
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::30])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -402,7 +411,7 @@ def fig300eth():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image300eth/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image300eth/png')
 
@@ -428,10 +437,13 @@ def fig900eth():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 5
 	axis.plot(dates, prices, 'm')
+	fig.subplots_adjust(bottom=0.15)
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::133])
-	axis.tick_params(labelsize=16)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
 	axis.fill_between(dates, prices, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
@@ -441,7 +453,7 @@ def fig900eth():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image900eth/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 
 	return send_file(img, mimetype='image900eth/png')
@@ -451,7 +463,7 @@ def fig14btc():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-	
+
 	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=14)
 
 	axis = fig.add_subplot(1, 1, 1)
@@ -469,11 +481,13 @@ def fig14btc():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 25
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::2])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, 2000, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -482,7 +496,7 @@ def fig14btc():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image14btc/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image14btc/png')
 
@@ -509,11 +523,13 @@ def fig30btc():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 25
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::3])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, 2000, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -522,7 +538,7 @@ def fig30btc():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image30btc/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image30btc/png')
 
@@ -550,11 +566,13 @@ def fig90btc():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 25
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::10])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, 2000, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -563,7 +581,7 @@ def fig90btc():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image90btc/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image90btc/png')
 
@@ -590,11 +608,13 @@ def fig300btc():
 		date = date[:2] + date[2:]
 		dates.append(date)
 
+	minprice = min(prices) - 25
 	axis.plot(dates, prices, 'm')
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::30])
-	axis.tick_params(labelsize=16)
-	axis.fill_between(dates, prices, facecolor='blue', alpha=0.5)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
+	axis.fill_between(dates, prices, minprice, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
 	canvas = FigureCanvas(fig)
@@ -603,7 +623,7 @@ def fig300btc():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image300btc/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image300btc/png')
 
@@ -630,9 +650,11 @@ def fig900btc():
 		dates.append(date)
 
 	axis.plot(dates, prices, 'm')
+	fig.subplots_adjust(bottom=0.15)
 	xticks = axis.get_xticks()
 	axis.set_xticks(xticks[::133])
-	axis.tick_params(labelsize=16)
+	axis.tick_params(axis='x', labelsize=13, labelrotation=45)
+	axis.tick_params(axis='y', labelsize=13)
 	axis.fill_between(dates, prices, facecolor='blue', alpha=0.5)
 	plt.margins(0)
 	plt.style.use('seaborn-darkgrid')
@@ -642,7 +664,7 @@ def fig900btc():
 	response = make_response(output.getvalue())
 	response.mimetype = 'image900btc/png'
 	img = io.BytesIO()
-	fig.savefig(img)
+	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
 	return send_file(img, mimetype='image900btc/png')
 
