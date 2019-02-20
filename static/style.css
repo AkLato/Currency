@@ -84,3 +84,80 @@ button {
 	margin-top:3rem;
 	padding: 48px;
 }
+
+.btn {
+  width: 3rem;
+  margin-bottom: 0.3rem;
+  border: 2px solid #155799;
+  padding: 6px 6px;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #F1F2F2;
+  transition: all 0.25s ease-in-out;
+}
+.btn:hover {
+  background-color: #8080ff;
+  border-color: #155799;
+  color: #F1F2F2;
+}
+.btn:active {
+  background-color: #8080ff;
+  border-color: #155799;
+  color: #F1F2F2;
+  box-shadow: none;
+}
+.btn:focus, .btn:active:focus {
+  background-color: #8080ff;
+  border-color: #155799;
+  color: #F1F2F2;
+  outline: 5px auto #155799;
+}
+.btn:visited {
+  background-color: #8080ff;
+  border-color: #155799;
+}
+
+.btn-secondary {
+  width: 250px;
+  margin: 10px;
+  border: 2px solid #F2994A;
+  padding: 6px 24px;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #F2994A;
+  background-color: #F1F2F2;
+  transition: all 0.25s ease-in-out;
+}
+.btn-secondary:hover {
+  background-color: #8080ff;
+  border-color: #F2994A;
+  color: #F1F2F2;
+}
+.btn-secondary:active {
+  background-color: #8080ff;
+  border-color: #F2994A;
+  color: #F1F2F2;
+  box-shadow: none;
+}
+.btn-secondary:focus, .btn-secondary:active:focus {
+  background-color: #8080ff;
+  border-color: #F2994A;
+  color: #F1F2F2;
+  outline: 5px auto #F2994A;
+}
+.btn-secondary:visited {
+  background-color: #F2994A;
+  border-color: #F2994A;
+}
+
+.zoom {
+  transition: transform .2s; 
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.4); 
+}
