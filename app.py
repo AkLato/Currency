@@ -53,8 +53,6 @@ def index():
 										)
 
 
-
-
 @app.route('/convert', methods=['GET', 'POST'])
 def convert():
 
@@ -252,7 +250,7 @@ def fig14eth():
 
 	fig = plt.figure(figsize=(15, 7.5))
 	r = price.get_historical_data('ETH', 'USD', 'day', info='close', aggregate=1, limit=14)
-	axis = fig14eth.add_subplot(1, 1, 1)
+	axis = fig.add_subplot(1, 1, 1)
 
 	prices = []
 	for value in r:
@@ -377,9 +375,7 @@ def fig300eth():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-	
 	r = price.get_historical_data('ETH', 'USD', 'day', info='close', aggregate=1, limit=300)
-
 	axis = fig.add_subplot(1, 1, 1)
 
 	prices = []
@@ -415,15 +411,15 @@ def fig300eth():
 	img.seek(0)
 	return send_file(img, mimetype='image300eth/png')
 
+
 @app.route('/fig900eth/', methods=['GET', 'POST'])
 def fig900eth():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-
 	r = price.get_historical_data('ETH', 'USD', 'day', info='close', aggregate=1, limit=900)
-
 	axis = fig.add_subplot(1, 1, 1)
+
 	prices = []
 	for value in r:
 		price = value['close']
@@ -455,18 +451,17 @@ def fig900eth():
 	img = io.BytesIO()
 	fig.savefig(img, bbox_inches="tight")
 	img.seek(0)
-
 	return send_file(img, mimetype='image900eth/png')
+
 
 @app.route('/fig14btc/')
 def fig14btc():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-
 	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=14)
-
 	axis = fig.add_subplot(1, 1, 1)
+
 	prices = []
 	for value in r:
 		price = value['close']
@@ -500,15 +495,15 @@ def fig14btc():
 	img.seek(0)
 	return send_file(img, mimetype='image14btc/png')
 
+
 @app.route('/fig30btc/')
 def fig30btc():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-	
 	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=30)
-
 	axis = fig.add_subplot(1, 1, 1)
+
 	prices = []
 	for value in r:
 		price = value['close']
@@ -548,10 +543,9 @@ def fig90btc():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-	
 	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=90)
-
 	axis = fig.add_subplot(1, 1, 1)
+
 	prices = []
 	for value in r:
 		price = value['close']
@@ -585,15 +579,15 @@ def fig90btc():
 	img.seek(0)
 	return send_file(img, mimetype='image90btc/png')
 
+
 @app.route('/fig300btc/')
 def fig300btc():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-	
 	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=300)
-
 	axis = fig.add_subplot(1, 1, 1)
+
 	prices = []
 	for value in r:
 		price = value['close']
@@ -632,10 +626,9 @@ def fig900btc():
 	from cryptocompy import coin, price
 
 	fig = plt.figure(figsize=(15, 7.5))
-	
 	r = price.get_historical_data('BTC', 'USD', 'day', info='close', aggregate=1, limit=900)
-
 	axis = fig.add_subplot(1, 1, 1)
+	
 	prices = []
 	for value in r:
 		price = value['close']
