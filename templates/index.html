@@ -20,17 +20,17 @@
         <div class="column is-4 has-text-centered" id="EUR">
             Aktuální kurz 1 EUR:
             <br>
-            <a class="button is-medium">{{ czk_rate }} Kč</a>
-            <a class="button is-medium">{{ gbp_rate }} £</a>
+            <a class="button is-medium zoom">{{ czk_rate }} Kč</a>
+            <a class="button is-medium zoom">{{ gbp_rate }} £</a>
             <br>
-            <a class="button is-medium">{{ usd_rate }} $</a>
-            <a class="button is-medium">{{ rub_rate }} ₽</a>
+            <a class="button is-medium zoom">{{ usd_rate }} $</a>
+            <a class="button is-medium zoom">{{ rub_rate }} ₽</a>
             <br>
-            <a class="button is-medium">{{ cny_rate }} ¥</a>
-            <a class="button is-medium">{{ pln_rate }} zł </a>
+            <a class="button is-medium zoom">{{ cny_rate }} ¥</a>
+            <a class="button is-medium zoom">{{ pln_rate }} zł </a>
         </div>
         <div class="column" >
-            <form id="form1" action="convert" method="POST" enctype="multipart/form-data">
+            <form id="form1" action="index" method="POST" enctype="multipart/form-data">
                 <div class="field has-addons has-addons-centered">
                     <span class="select">
                         <select name='currencies'>
@@ -67,18 +67,16 @@
         <div class="column is-4 has-text-centered" id='BTC'>
             Aktuální kurz 1 BTC:
             <br>
-            <a class="button is-medium">{{ czk_btc }} Kč</a>
-            <a class="button is-medium">{{ eur_btc }} €</a>
+            <a class="button is-medium zoom">{{ czk_btc }} Kč</a>
+            <a class="button is-medium zoom">{{ eur_btc }} €</a>
             <br>
-            <a class="button is-medium">{{ usd_btc }} $</a>
-            <a class="button is-medium">{{ rub_btc }} ₽</a>
+            <a class="button is-medium zoom">{{ usd_btc }} $</a>
+            <a class="button is-medium zoom">{{ rub_btc }} ₽</a>
             <br>
-            <a class="button is-medium">{{ cny_btc }} ¥</a>
-            <a class="button is-medium">{{ pln_btc }} zł</a>
+            <a class="button is-medium zoom">{{ cny_btc }} ¥</a>
+            <a class="button is-medium zoom">{{ pln_btc }} zł</a>
         </div>
     </div>
-   
-
 
     <section id='graph_area'>
         <div id='graph1'>
@@ -86,11 +84,11 @@
             ETH/USD
             </div>
             <div id='graph' class="has-text-centered">
-                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig14eth') }}'">14</button>
-                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig30eth') }}'">30</button>
-                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig90eth') }}'">90</button>
-                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig300eth') }}'">300</button>
-                <button onclick="document.getElementById('ethusd').src='{{ url_for('fig900eth') }}'">900</button>
+                <button class='btn' onclick="document.getElementById('ethusd').src='{{ url_for('fig14eth') }}'">14</button>
+                <button class='btn' onclick="document.getElementById('ethusd').src='{{ url_for('fig30eth') }}'">30</button>
+                <button class='btn' onclick="document.getElementById('ethusd').src='{{ url_for('fig90eth') }}'">90</button>
+                <button class='btn' onclick="document.getElementById('ethusd').src='{{ url_for('fig300eth') }}'">300</button>
+                <button class='btn' onclick="document.getElementById('ethusd').src='{{ url_for('fig900eth') }}'">900</button>
                 <img id="ethusd" src="{{ url_for('fig90eth') }}">
             </div>
         </div>
@@ -99,11 +97,11 @@
             BTC/USD
             </div>
             <div id='graph' class="has-text-centered">
-              <button onclick="document.getElementById('btcusd').src='{{ url_for('fig14btc') }}'">14</button>
-                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig30btc') }}'">30</button>
-                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig90btc') }}'">90</button>
-                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig300btc') }}'">300</button>
-                <button onclick="document.getElementById('btcusd').src='{{ url_for('fig900btc') }}'">900</button>
+              <button class='btn' onclick="document.getElementById('btcusd').src='{{ url_for('fig14btc') }}'">14</button>
+                <button class='btn' onclick="document.getElementById('btcusd').src='{{ url_for('fig30btc') }}'">30</button>
+                <button class='btn' onclick="document.getElementById('btcusd').src='{{ url_for('fig90btc') }}'">90</button>
+                <button class='btn' onclick="document.getElementById('btcusd').src='{{ url_for('fig300btc') }}'">300</button>
+                <button class='btn' onclick="document.getElementById('btcusd').src='{{ url_for('fig900btc') }}'">900</button>
                 <img id="btcusd" src="{{ url_for('fig90btc') }}">
             </div>
         </div>
